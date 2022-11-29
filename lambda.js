@@ -8,10 +8,12 @@ const listPath = '/list'
 
 exports.handler = async function(event) {
     let response
-    console.log('this is the event', event)
     switch(true) {
         case event.httpMethod === 'GET' && event.path === listPath:
-            response = getAllItems()
+            response = await getAllItems()
+            break;
+        case event.httpMethod === 'POST' && event.path === listPath:
+            response = await addItem(JSON.parse(event.body))
             break;
     }
     return response
@@ -32,12 +34,34 @@ function buildResponse(statusCode, body) {
 
 async function getAllItems() {
     const params = {
-        TableName: tableName
-        
+        TableName: tableName 
     }
     const allItems = await dynamodb.scan(params).promise()
     const body = {
         items: allItems
     }
     return buildResponse(200, body)
+}
+
+async function addItem(requestBody) {
+    const params = {
+        TableName: tableName,
+        Item: requestBody
+    }
+    try {
+        await dynamodb.put(params).promise()
+        const body = {
+            Operation: 'SAVE',
+            MESSAGE: 'SUCCESS',
+            Item: requestBody
+        }
+        return buildResponse(200, body)
+    } catch {
+            const body = {
+                Operation: 'SAVE',
+                MESSAGE: 'FAILURE',
+                Item: requestBody
+            }
+            return buildResponse(200, body)
+    }
 }

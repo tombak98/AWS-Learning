@@ -7,7 +7,8 @@ import ListItem from './components/ListItem'
 const App:React.FC = () => {
     
     // now, lets create a separate state that holds an array of Todos that we created in model.ts
-    const [todos, setTodos] = React.useState<Todo[]>([])
+    const [list, setList] = React.useState([])
+    const [newItem, setNew] = React.useState("")
 
     // so, even for basic functions that take an event, we need to give it a type. Look this up later
     const handleAdd = (event: React.SyntheticEvent) => {
@@ -17,17 +18,33 @@ const App:React.FC = () => {
     React.useEffect(()=>{
         async function getItems() {
             const {data} = await axios.get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')
-            console.log(data)
+            setList(data.items.Items)
         }
         getItems()
     },[])
+
+    async function addItem() {
+        let newIDnumber = Math.floor(Math.random()*100000)
+        let IDstring = newIDnumber.toString()
+        await axios.post('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list', {
+            ID: IDstring,
+            Name: newItem
+        })
+        const {data} = await axios.get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')
+        setList(data.items.Items)
+        setNew('')
+    }
  
     return (
         <>
         <h1 id="title">Simple List</h1>
+        <div className="input">
+            <input onChange={(event)=>setNew(event.target.value)} value={newItem}></input><button onClick={addItem}>Add new Item</button>
+        </div>
         <div id="todo-holder">
-            <ListItem name="Testing This out"/>
-            <ListItem name="Testing This out2"/>
+            {list?.map((element)=> 
+                <ListItem key={element.ID} name={element.Name}/>
+            )}
         </div>
         </>
     )

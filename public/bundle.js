@@ -35899,7 +35899,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 // React Function Component type
 var App = function () {
     // now, lets create a separate state that holds an array of Todos that we created in model.ts
-    var _a = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]), todos = _a[0], setTodos = _a[1];
+    var _a = react__WEBPACK_IMPORTED_MODULE_0___default().useState([]), list = _a[0], setList = _a[1];
+    var _b = react__WEBPACK_IMPORTED_MODULE_0___default().useState(""), newItem = _b[0], setNew = _b[1];
     // so, even for basic functions that take an event, we need to give it a type. Look this up later
     var handleAdd = function (event) {
         event.preventDefault();
@@ -35913,7 +35914,7 @@ var App = function () {
                         case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')];
                         case 1:
                             data = (_a.sent()).data;
-                            console.log(data);
+                            setList(data.items.Items);
                             return [2 /*return*/];
                     }
                 });
@@ -35921,11 +35922,38 @@ var App = function () {
         }
         getItems();
     }, []);
+    function addItem() {
+        return __awaiter(this, void 0, void 0, function () {
+            var newIDnumber, IDstring, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        newIDnumber = Math.floor(Math.random() * 100000);
+                        IDstring = newIDnumber.toString();
+                        return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().post('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list', {
+                                ID: IDstring,
+                                Name: newItem
+                            })];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')];
+                    case 2:
+                        data = (_a.sent()).data;
+                        setList(data.items.Items);
+                        setNew('');
+                        return [2 /*return*/];
+                }
+            });
+        });
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Simple List"),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { id: "todo-holder" },
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "Testing This out" }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "Testing This out2" }))));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "input" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { onChange: function (event) { return setNew(event.target.value); }, value: newItem }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: addItem }, "Add new Item")),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { id: "todo-holder" }, list === null || list === void 0 ? void 0 : list.map(function (element) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], { key: element.ID, name: element.Name });
+        }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
