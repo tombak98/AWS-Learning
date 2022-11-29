@@ -35856,6 +35856,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_ListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/ListItem */ "./src/components/ListItem.tsx");
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35894,6 +35895,7 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 };
 
 
+
 // React Function Component type
 var App = function () {
     // now, lets create a separate state that holds an array of Todos that we created in model.ts
@@ -35902,48 +35904,53 @@ var App = function () {
     var handleAdd = function (event) {
         event.preventDefault();
     };
-    // var callAPI = (firstName:string,lastName:string)=>{
-    //     // instantiate a headers object
-    //     var myHeaders = new Headers();
-    //     // add content type header to object
-    //     myHeaders.append("Content-Type", "application/json");
-    //     // using built in JSON utility package turn object to string and store in a variable
-    //     var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
-    //     // create a JSON object with parameters for API call and store in a variable
-    //     var requestOptions = {
-    //         method: 'POST',
-    //         headers: myHeaders,
-    //         body: raw,
-    //         redirect: 'follow'
-    //     };
-    //     // make API call with parameters and use promises to get response
-    //     fetch("https://8wojfslaqe.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
-    //     .then(response => response.text())
-    //     .then(result => alert(JSON.parse(result).message))
-    //     .catch(error => console.log('error', error));
-    // }
-    function testLambda(firstName, lastName) {
-        return __awaiter(this, void 0, void 0, function () {
-            var data;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().post('https://8wojfslaqe.execute-api.us-east-1.amazonaws.com/dev', {
-                            firstName: firstName,
-                            lastName: lastName
-                        })];
-                    case 1:
-                        data = (_a.sent()).data;
-                        console.log(data);
-                        return [2 /*return*/];
-                }
+    react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
+        function getItems() {
+            return __awaiter(this, void 0, void 0, function () {
+                var data;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')];
+                        case 1:
+                            data = (_a.sent()).data;
+                            console.log(data);
+                            return [2 /*return*/];
+                    }
+                });
             });
-        });
-    }
+        }
+        getItems();
+    }, []);
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Todo List"),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () { return testLambda('Thomas', 'Bak'); } }, "Try Me")));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Simple List"),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { id: "todo-holder" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "Testing This out" }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], { name: "Testing This out2" }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+
+/***/ }),
+
+/***/ "./src/components/ListItem.tsx":
+/*!*************************************!*\
+  !*** ./src/components/ListItem.tsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var ListItem = function (_a) {
+    var name = _a.name;
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "todo-single" }, name));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListItem);
 
 
 /***/ })
