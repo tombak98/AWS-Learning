@@ -35854,9 +35854,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_InputField__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/InputField */ "./src/components/InputField.tsx");
-/* harmony import */ var _components_TodoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/TodoList */ "./src/components/TodoList.tsx");
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 // React Function Component type
@@ -35867,269 +35902,48 @@ var App = function () {
     var handleAdd = function (event) {
         event.preventDefault();
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Todo List"),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_InputField__WEBPACK_IMPORTED_MODULE_1__["default"], { handleAdd: handleAdd, setTodos: setTodos }),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_TodoList__WEBPACK_IMPORTED_MODULE_2__["default"], { todos: todos, setTodos: setTodos })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
-
-
-/***/ }),
-
-/***/ "./src/components/InputField.tsx":
-/*!***************************************!*\
-  !*** ./src/components/InputField.tsx ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-// so here, we see that we set the type of that object that is input into as a Props interface
-// you can ALSO do. InputField:React.FC<Props> = ({todo, setTodo})
-var InputField = function (_a) {
-    var handleAdd = _a.handleAdd, setTodos = _a.setTodos;
-    var _b = react__WEBPACK_IMPORTED_MODULE_0___default().useState(""), todo = _b[0], setTodo = _b[1];
-    var handleChange = function (event) {
-        event.preventDefault();
-        setTodo(event.target.value);
-    };
-    var handleSubmit = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    event.preventDefault();
-                    return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/todo/add', {
-                            name: todo,
-                            isDone: false
-                        })];
-                case 1:
-                    _a.sent();
-                    return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().get('api/todo/all')];
-                case 2:
-                    data = (_a.sent()).data;
-                    setTodos(data);
-                    setTodo('');
-                    return [2 /*return*/];
-            }
-        });
-    }); };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { className: "input", value: todo, onChange: handleChange }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: handleSubmit }, "Submit"))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InputField);
-
-
-/***/ }),
-
-/***/ "./src/components/TodoItem.tsx":
-/*!*************************************!*\
-  !*** ./src/components/TodoItem.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-var TodoItem = function (_a) {
-    var id = _a.id, name = _a.name, isDone = _a.isDone, checkOff = _a.checkOff, deleteTodo = _a.deleteTodo, editTodo = _a.editTodo;
-    var _b = react__WEBPACK_IMPORTED_MODULE_0___default().useState(""), edit = _b[0], setEdit = _b[1];
-    var _c = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false), editing = _c[0], setEditing = _c[1];
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "todo-single", key: id },
-        editing ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { value: edit, onChange: function (e) { return setEdit(e.target.value); }, placeholder: name }),
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { value: id, onClick: function (event) {
-                    editTodo(event, edit);
-                    setEditing(false);
-                } }, "Submit"))
-            : react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", { className: isDone ? 'strike' : '' }, name),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: checkOff, value: id }, "Check"),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () {
-                setEditing(!editing);
-                setEdit("");
-            } }, "Edit"),
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: deleteTodo, value: id }, "Delete")));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoItem);
-
-
-/***/ }),
-
-/***/ "./src/components/TodoList.tsx":
-/*!*************************************!*\
-  !*** ./src/components/TodoList.tsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _TodoItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TodoItem */ "./src/components/TodoItem.tsx");
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-var TodoList = function (_a) {
-    var todos = _a.todos, setTodos = _a.setTodos;
-    react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-        var getStuff = function () { return __awaiter(void 0, void 0, void 0, function () {
+    // var callAPI = (firstName:string,lastName:string)=>{
+    //     // instantiate a headers object
+    //     var myHeaders = new Headers();
+    //     // add content type header to object
+    //     myHeaders.append("Content-Type", "application/json");
+    //     // using built in JSON utility package turn object to string and store in a variable
+    //     var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+    //     // create a JSON object with parameters for API call and store in a variable
+    //     var requestOptions = {
+    //         method: 'POST',
+    //         headers: myHeaders,
+    //         body: raw,
+    //         redirect: 'follow'
+    //     };
+    //     // make API call with parameters and use promises to get response
+    //     fetch("https://8wojfslaqe.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
+    //     .then(response => response.text())
+    //     .then(result => alert(JSON.parse(result).message))
+    //     .catch(error => console.log('error', error));
+    // }
+    function testLambda(firstName, lastName) {
+        return __awaiter(this, void 0, void 0, function () {
             var data;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/todo/all')];
+                    case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().post('https://8wojfslaqe.execute-api.us-east-1.amazonaws.com/dev', {
+                            firstName: firstName,
+                            lastName: lastName
+                        })];
                     case 1:
                         data = (_a.sent()).data;
-                        setTodos(data);
+                        console.log(data);
                         return [2 /*return*/];
                 }
             });
-        }); };
-        getStuff();
-    }, []);
-    var checkOff = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    event.preventDefault();
-                    return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().put("api/todo/checkoff/".concat(event.target.value))];
-                case 1:
-                    data = (_a.sent()).data;
-                    setTodos(data);
-                    return [2 /*return*/];
-            }
         });
-    }); };
-    var deleteTodo = function (event) { return __awaiter(void 0, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    event.preventDefault();
-                    return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]("api/todo/delete/".concat(event.target.value))];
-                case 1:
-                    data = (_a.sent()).data;
-                    setTodos(data);
-                    return [2 /*return*/];
-            }
-        });
-    }); };
-    var editTodo = function (event, newName) { return __awaiter(void 0, void 0, void 0, function () {
-        var data;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    event.preventDefault();
-                    return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().put("/api/todo/update/".concat(event.target.value), {
-                            name: newName
-                        })];
-                case 1:
-                    data = (_a.sent()).data;
-                    setTodos(data);
-                    return [2 /*return*/];
-            }
-        });
-    }); };
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { id: "todo-holder" }, todos === null || todos === void 0 ? void 0 : todos.map(function (todo) {
-            return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TodoItem__WEBPACK_IMPORTED_MODULE_2__["default"], { deleteTodo: deleteTodo, checkOff: checkOff, editTodo: editTodo, name: todo.name, id: todo.id, isDone: todo.isDone });
-        }))));
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Todo List"),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () { return testLambda('Thomas', 'Bak'); } }, "Try Me")));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TodoList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 
 /***/ })

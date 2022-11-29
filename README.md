@@ -1,10 +1,5 @@
-# App Boilerplate
+# Notes to self
 
-## Getting started
-
-1. Fork and clone this repo.
-2. `npm install`.
-3. `npm run start`
-4. name your database test
-5. Make sure you add a secrets.js file with a process.env.JWT defined
+1. While this uses react, it doesnt yet self compile on AWS Amplify. So, have to manually compile it locally first
+2. Then, you zip up the html, bundle, and css files and upload that to the AWS Amplify App
 
