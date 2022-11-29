@@ -14,12 +14,13 @@ const App:React.FC = () => {
     const handleAdd = (event: React.SyntheticEvent) => {
         event.preventDefault()
     }
+    
+    async function getItems() {
+        const {data} = await axios.get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')
+        setList(data.items.Items)
+    }
 
     React.useEffect(()=>{
-        async function getItems() {
-            const {data} = await axios.get('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list')
-            setList(data.items.Items)
-        }
         getItems()
     },[])
 
@@ -43,7 +44,7 @@ const App:React.FC = () => {
         </div>
         <div id="todo-holder">
             {list?.map((element)=> 
-                <ListItem key={element.ID} name={element.Name}/>
+                <ListItem getItems={getItems} key={element.ID} itemID={element.ID} name={element.Name}/>
             )}
         </div>
         </>

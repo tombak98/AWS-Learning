@@ -15,6 +15,9 @@ exports.handler = async function(event) {
         case event.httpMethod === 'POST' && event.path === listPath:
             response = await addItem(JSON.parse(event.body))
             break;
+        case event.httpMethod === 'DELETE' && event.path === listPath:
+            response = await deleteItem(JSON.parse(event.body).ID)
+            break;
     }
     return response
 }
@@ -26,7 +29,7 @@ function buildResponse(statusCode, body) {
             'Content-Type': 'application/json',
             "Access-Control-Allow-Headers" : "Content-Type",
             "Access-Control-Allow-Origin": "http://localhost:3000",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET,DELETE"
         },
         body: JSON.stringify(body)
     }
@@ -61,6 +64,32 @@ async function addItem(requestBody) {
                 Operation: 'SAVE',
                 MESSAGE: 'FAILURE',
                 Item: requestBody
+            }
+            return buildResponse(200, body)
+    }
+}
+
+async function deleteItem(itemID) {
+    const params = {
+        TableName: tableName,
+        Key: {
+            'ID':itemID
+        },
+        ReturnValues: 'ALL_OLD'
+    }
+    try {
+        await dynamodb.delete(params).promise()
+        const body = {
+            Operation: 'SAVE',
+            MESSAGE: 'SUCCESS',
+            Item: itemID
+        }
+        return buildResponse(200, body)
+    } catch {
+            const body = {
+                Operation: 'SAVE',
+                MESSAGE: 'FAILURE',
+                Item: itemID
             }
             return buildResponse(200, body)
     }
