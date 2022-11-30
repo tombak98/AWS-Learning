@@ -18,6 +18,10 @@ exports.handler = async function(event) {
         case event.httpMethod === 'DELETE' && event.path === listPath:
             response = await deleteItem(JSON.parse(event.body).ID)
             break;
+        case event.httpMethod === 'PUT' && event.path === listPath:
+            const requestBody = JSON.parse(event.body)
+            response = await updateItem(requestBody.itemID, requestBody.updateKey, requestBody.updateValue)
+            break;
     }
     return response
 }
@@ -80,14 +84,43 @@ async function deleteItem(itemID) {
     try {
         await dynamodb.delete(params).promise()
         const body = {
-            Operation: 'SAVE',
+            Operation: 'DELETE',
             MESSAGE: 'SUCCESS',
             Item: itemID
         }
         return buildResponse(200, body)
     } catch {
             const body = {
-                Operation: 'SAVE',
+                Operation: 'DELETE',
+                MESSAGE: 'FAILURE',
+                Item: itemID
+            }
+            return buildResponse(200, body)
+    }
+}
+
+async function updateItem(itemID, updateKey, updateValue) {
+    const params = {
+        TableName: tableName,
+        Key: {
+            'ID': itemID
+        },
+        UpdateExpression: `set Name = :value`,
+        ExpressionAttributeValues: {
+            ':value': updateValue
+        }
+    }
+    try {
+        await dynamodb.update(params).promise()
+        const body = {
+            Operation: 'UPDATE',
+            MESSAGE: 'SUCCESS',
+            Item: itemID
+        }
+        return buildResponse(200, body)
+    } catch {
+            const body = {
+                Operation: 'UPDATE',
                 MESSAGE: 'FAILURE',
                 Item: itemID
             }

@@ -36015,6 +36015,8 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var ListItem = function (_a) {
     var name = _a.name, itemID = _a.itemID, getItems = _a.getItems;
+    var _b = react__WEBPACK_IMPORTED_MODULE_0___default().useState(''), newName = _b[0], setNew = _b[1];
+    var _c = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false), edit = _c[0], setEdit = _c[1];
     function deleteHandle() {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -36034,8 +36036,52 @@ var ListItem = function (_a) {
             });
         });
     }
+    function updateHandler() {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios__WEBPACK_IMPORTED_MODULE_1___default().put('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list', {
+                            ID: itemID,
+                            updateKey: "Name",
+                            updateValue: newName
+                        })];
+                    case 1:
+                        _a.sent();
+                        setNew('');
+                        setEdit(false);
+                        getItems();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    }
+    function updateHandler2() {
+        return __awaiter(this, void 0, void 0, function () {
+            var myHeaders, raw, requestOptions;
+            return __generator(this, function (_a) {
+                myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                raw = JSON.stringify({
+                    "ID": itemID,
+                    "updateKey": "Name",
+                    "updateValue": "newName"
+                });
+                requestOptions = {
+                    method: 'PUT',
+                    headers: myHeaders,
+                    body: raw
+                };
+                fetch('https://vqmpkc8zn0.execute-api.us-east-1.amazonaws.com/dev/list', requestOptions).then();
+                return [2 /*return*/];
+            });
+        });
+    }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "todo-single" },
         name,
+        edit ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { onChange: function (event) { return setNew(event.target.value); }, value: newName }),
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: updateHandler }, "Submit")) : react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: function () { return setEdit(!edit); } }, "Edit Me"),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: deleteHandle }, "Delete Me")));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ListItem);
