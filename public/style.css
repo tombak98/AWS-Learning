@@ -1,6 +1,6 @@
 * {
     margin:0;
-    font-family: sans-serif 
+    font-family: 'Ubuntu', 'sans-serif'
 }
 
 #root {
@@ -50,4 +50,10 @@
     word-wrap: break-word;
     margin: 20px;
     color: 232f3e;
+}
+
+button {
+    border: none;
+    background-color: #ff9900;
+    color: white;
 }
