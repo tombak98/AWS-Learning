@@ -9,10 +9,17 @@
     align-items: center;
 }
 
+.header {
+    background-color: #232f3e;
+    width: 100%;
+}
+
 #title {
     font-size: 2rem;
     text-align: center;
     margin: 40px;
+    background-color: #232f3e;
+    color: white;
 }
 
 .input {
@@ -36,4 +43,11 @@
 
 .strike {
     text-decoration: line-through;
+}
+
+.sub-header{
+    width: 50%;
+    word-wrap: break-word;
+    margin: 20px;
+    color: 232f3e;
 }

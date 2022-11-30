@@ -35947,7 +35947,9 @@ var App = function () {
         });
     }
     return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
-        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "Simple List"),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "header" },
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", { id: "title" }, "AWS Simple List")),
+        react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", { className: "sub-header" }, "In this project, I used AWS Amplify to host the app, AWS Lambda to handle backend functionality, AWS API Gateway to handle the API, and AWS DynamoDB to store all of the List Items"),
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: "input" },
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", { onChange: function (event) { return setNew(event.target.value); }, value: newItem }),
             react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", { onClick: addItem }, "Add new Item")),

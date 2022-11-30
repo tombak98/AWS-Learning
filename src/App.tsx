@@ -38,7 +38,12 @@ const App:React.FC = () => {
  
     return (
         <>
-        <h1 id="title">Simple List</h1>
+        <div className="header">
+            <h1 id="title">AWS Simple List</h1>
+        </div>
+        <h3 className="sub-header">In this project, I used AWS Amplify to host the app, AWS Lambda to handle backend functionality, AWS API Gateway to handle the API,
+            and AWS DynamoDB to store all of the List Items
+        </h3>
         <div className="input">
             <input onChange={(event)=>setNew(event.target.value)} value={newItem}></input><button onClick={addItem}>Add new Item</button>
         </div>
