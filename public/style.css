@@ -25,6 +25,8 @@
 .input {
     margin-top: 20px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
 }
 
 #todo-holder {
@@ -36,6 +38,7 @@
 
 .todo-single {
     display: flex;
+    align-items: center;
     padding: 10px;
     border: 2px black solid;
     gap: 20px;
@@ -56,4 +59,15 @@ button {
     border: none;
     background-color: #ff9900;
     color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+button:hover {
+    background-color: #ffa621;
+}
+
+input {
+    font-size: 1.15rem;
 }
